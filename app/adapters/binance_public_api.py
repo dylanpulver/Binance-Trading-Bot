@@ -5,28 +5,13 @@
 
 ##########################################################################
 
-import time, json, hmac, hashlib, requests, os, sys
+import time, json, requests, os, sys
 from urllib.parse import urljoin, urlencode
 from sqlalchemy import create_engine, Table, MetaData, text, select
 import pandas as pd
 import numpy as np
 
-def obtain_env_variable(variable_name, enviro_variable):
-    """
-    Obtains enviro variable and if not available exits script.
-
-    Arguments:
-        variable_name {string} -- the name of the variable in the script
-        enviro_variable {string} -- the name the enviro variable is stored as
-    """
-    try:
-        variable_name = os.environ.get(enviro_variable)
-    except Exception as e:
-        print(f"{enviro_variable} not set in environment")
-        print(e)
-        sys.exit(1)
-
-    return variable_name
+from utilities import obtain_env_variable
 
 API_KEY = obtain_env_variable('BINANCE_API_KEY', 'BINANCE_API_KEY')
 BASE_URL = 'https://api.binance.com'
@@ -95,8 +80,8 @@ def get_exchange_info():
         data='API CALL DID NOT WORK'
     return data
 
-#binance_info=get_exchange_info()
-#print(binance_info)
+binance_info=get_exchange_info()
+print(binance_info)
 ##########################################################################
 
 def get_order_book(symbol,limit=100):
@@ -412,7 +397,7 @@ def get_top_of_book(symbol):
         raise BinanceException(status_code=r.status_code, data=r.json())
     return top_of_book
 
-top_of_book_test=get_top_of_book(None)
-print(top_of_book_test)
+#top_of_book_test=get_top_of_book(None)
+#print(top_of_book_test)
 
 

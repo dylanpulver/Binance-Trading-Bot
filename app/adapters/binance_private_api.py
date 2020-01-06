@@ -11,6 +11,9 @@ from sqlalchemy import create_engine, Table, MetaData, text, select
 import pandas as pd
 import numpy as np
 
+from utilities import obtain_env_variable
+
+
 def obtain_env_variable(variable_name, enviro_variable):
     """
     Obtains enviro variable and if not available exits script.

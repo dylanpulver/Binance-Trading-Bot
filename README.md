@@ -1,8 +1,8 @@
-# binancetrading
+Binance Trading Set Up  
 All Binance Trading and data tools v1
 This repo will work with the binance api to facilitate data and trading.
 
-Make sure I comply with rules:
+Important considerations when placing trades to comply with are the following:  
 price >= minPrice
 price <= maxPrice
 (price-minPrice) % tickSize == 0

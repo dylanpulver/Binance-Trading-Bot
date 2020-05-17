@@ -13,24 +13,6 @@ import numpy as np
 
 from utilities import obtain_env_variable
 
-
-def obtain_env_variable(variable_name, enviro_variable):
-    """
-    Obtains enviro variable and if not available exits script.
-
-    Arguments:
-        variable_name {string} -- the name of the variable in the script
-        enviro_variable {string} -- the name the enviro variable is stored as
-    """
-    try:
-        variable_name = os.environ.get(enviro_variable)
-    except Exception as e:
-        print(f"{enviro_variable} not set in environment")
-        print(e)
-        sys.exit(1)
-
-    return variable_name
-
 API_KEY = obtain_env_variable('BINANCE_API_KEY', 'BINANCE_API_KEY')
 SECRET_KEY = obtain_env_variable('BINANCE_API_SECRET', 'BINANCE_API_SECRET')
 BASE_URL = 'https://api.binance.com'
